@@ -1,11 +1,15 @@
 # Introduction to Algorithms
 Data Structure &amp; Algorithm Implementation
 
-## Sorting
+## Algorithm
+
+### I Foundations
 
 [Insertion Sort](./I%20Foundations/2%20Getting%20Started/insertion_sort/insertion_sort.c)
 
 [Merge Sort](./I%20Foundations/2%20Getting%20Started/merge_sort/merge_sort.c)
+
+### II Sorting and Statistics
 
 [Heapsort](./II%20Sorting%20and%20Statistics/6%20Heapsort/binary_heap/binary_heap.c)
 
