@@ -7,6 +7,8 @@ Data Structure &amp; Algorithm Implementation
 
 ### II Sorting and Statistics
 
+[Binary Heap](./II%20Sorting%20and%20Statistics/6%20Heapsort/binary_heap/binary_heap.c)
+
 [Stack](./III%20Data%20Structures/10%20Elementary%20Data%20Structures/stack/stack.c)
 
 [Queue](./III%20Data%20Structures/10%20Elementary%20Data%20Structures/queue/queue.c)
