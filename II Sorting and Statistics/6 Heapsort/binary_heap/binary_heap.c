@@ -38,33 +38,3 @@ int max_heapify(int *array, int heap_size, int i)
     }
     return 0;
 }
-
-int build_max_heap(int *array, int n)
-{
-    int heap_size = n;
-
-    for (int i = (int)floor(n / 2) - 1; i >= 0; i--)
-    {
-        max_heapify(array, heap_size, i);
-    }
-
-    return 0;
-}
-
-int heapsort(int *array, int n)
-{
-    build_max_heap(array, n);
-
-    int heap_size = n;
-
-    for (int i = n - 1; i >= 1; i--)
-    {
-        int temp = *(array);
-        *(array) = *(array + i); // exchange A[0] with A[i]
-        *(array + i) = temp;
-        heap_size--;
-        max_heapify(array, heap_size, 0);
-    }
-
-    return 0;
-}

@@ -21,7 +21,4 @@ int max_heapify(int *array, int heap_size, int i);
 // Produce a max-heap from an unordered input array A[0 : n - 1]
 int build_max_heap(int *array, int n);
 
-// Heapsort array A[0 : n - 1]
-int heapsort(int *array, int n);
-
 #endif // BINARY_HEAP_H
