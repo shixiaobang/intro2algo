@@ -1,6 +1,16 @@
 # Introduction to Algorithms
 Data Structure &amp; Algorithm Implementation
 
+## Data Structure
+
+### I Foundations
+
+### II Sorting and Statistics
+
+[Stack](./III%20Data%20Structures/10%20Elementary%20Data%20Structures/stack/stack.c)
+
+[Queue](./III%20Data%20Structures/10%20Elementary%20Data%20Structures/queue/queue.c)
+
 ## Algorithm
 
 ### I Foundations
