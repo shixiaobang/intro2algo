@@ -1,8 +1,3 @@
-/*
-    Max Priority Queue
-    Author: shixiaobang
-    Mail: xiaobang.shi@outlook.com
-*/
 #if !defined(MAX_PRIORITY_QUEUE_H)
 #define MAX_PRIORITY_QUEUE_H
 
