@@ -1,8 +1,3 @@
-/*
-    Insertion Sort
-    Author: shixiaobang
-    Mail: xiaobang.shi@outlook.com
-*/
 #if !defined(INSERTION_SORT_H)
 #define INSERTION_SORT_H
 
