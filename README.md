@@ -13,6 +13,8 @@ Data Structure &amp; Algorithm Implementation
 
 [Queue](./III%20Data%20Structures/10%20Elementary%20Data%20Structures/queue/queue.c)
 
+[Deque](./III%20Data%20Structures/10%20Elementary%20Data%20Structures/deque/deque.c)
+
 ## Algorithm
 
 ### I Foundations
