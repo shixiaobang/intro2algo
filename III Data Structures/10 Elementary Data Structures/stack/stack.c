@@ -62,8 +62,8 @@ int push(stack *s, int key)
 
 int pop(stack *s)
 {
-    int flag = stack_empty(s);
-    if (flag)
+    int empty = stack_empty(s);
+    if (empty)
     {
         return -1;
     }
