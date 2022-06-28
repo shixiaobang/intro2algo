@@ -48,8 +48,8 @@ bool queue_full(const queue *q)
 
 int enqueue(queue *q, int key)
 {
-    int flag = queue_full(q);
-    if (flag)
+    int full = queue_full(q);
+    if (full)
     {
         return 1;
     }
@@ -64,8 +64,8 @@ int enqueue(queue *q, int key)
 
 int dequeue(queue *q)
 {
-    int flag = queue_empty(q);
-    if (flag)
+    int empty = queue_empty(q);
+    if (empty)
     {
         return -1;
     }
