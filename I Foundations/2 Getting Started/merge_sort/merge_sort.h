@@ -1,8 +1,3 @@
-/*
-    Merge Sort
-    Author: shixiaobang
-    Mail: xiaobang.shi@outlook.com
-*/
 #if !defined(MERGE_SORT_H)
 #define MERGE_SORT_H
 
