@@ -1,8 +1,3 @@
-/*
-    Binary Heap
-    Author: shixiaobang
-    Mail: xiaobang.shi@outlook.com
-*/
 #if !defined(BINARY_HEAP_H)
 #define BINARY_HEAP_H
 
