@@ -36,5 +36,6 @@ int max_heapify(int *array, int heap_size, int i)
 
         max_heapify(array, heap_size, largest);
     }
+
     return 0;
 }
