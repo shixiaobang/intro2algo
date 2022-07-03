@@ -90,13 +90,11 @@ int sll_prepend(sll *head, int key)
     if (*head == NULL)
     {
         *head = element;
-        element->next = NULL;
     }
     else
     {
-        sll_element *temp = *head;
+        element->next = *head;
         *head = element;
-        element->next = temp;
     }
 
     return 0;
@@ -108,7 +106,6 @@ int sll_append(sll *head, int key)
     if (*head == NULL)
     {
         *head = element;
-        element->next = NULL;
     }
     else
     {
