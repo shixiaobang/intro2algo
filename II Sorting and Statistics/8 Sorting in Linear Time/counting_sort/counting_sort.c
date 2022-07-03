@@ -40,6 +40,7 @@ int *counting_sort(int *array, int n, int k)
     }
 
     free(temp);
+    temp = NULL;
 
     return sorted; // Return sorted array B[0 : n - 1]
 }
