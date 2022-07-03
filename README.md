@@ -19,6 +19,8 @@ Data Structure &amp; Algorithm Implementation
 
 [Singly Linked List](./III%20Data%20Structures/10%20Elementary%20Data%20Structures/singly_linked_list/singly_linked_list.c)
 
+[Doubly Linked List](./III%20Data%20Structures/10%20Elementary%20Data%20Structures/doubly_linked_list/doubly_linked_list.c)
+
 ## Algorithm
 
 ### I Foundations
