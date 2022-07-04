@@ -1,5 +1,4 @@
 #include "doubly_linked_list.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 dll_element *element_ctor(int key)
