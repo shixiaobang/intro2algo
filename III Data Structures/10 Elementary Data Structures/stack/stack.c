@@ -4,7 +4,7 @@
 stack *stack_ctor(int size)
 {
     stack *s = (stack *)malloc(sizeof(stack));
-    s->p_key = (int *)malloc(sizeof(int) * size);
+    s->keys = (int *)malloc(sizeof(int) * size);
 
     s->top = -1;
     s->size = size;
@@ -14,7 +14,7 @@ stack *stack_ctor(int size)
 
 int stack_dtor(stack *s)
 {
-    free(s->p_key);
+    free(s->keys);
     free(s);
 
     return 0;
@@ -54,7 +54,7 @@ int push(stack *s, int key)
     else
     {
         s->top += 1;
-        *(s->p_key + s->top) = key;
+        *(s->keys + s->top) = key;
 
         return 0;
     }
@@ -70,6 +70,6 @@ int pop(stack *s)
     else
     {
         s->top -= 1;
-        return *(s->p_key + s->top + 1);
+        return *(s->keys + s->top + 1);
     }
 }
