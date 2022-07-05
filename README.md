@@ -31,7 +31,7 @@ Data Structure &amp; Algorithm Implementation
 
 ### II Sorting and Statistics
 
-[Heapsort](./II%20Sorting%20and%20Statistics/6%20Heapsort/binary_heap/binary_heap.c)
+[Heapsort](./II%20Sorting%20and%20Statistics/6%20Heapsort/heap_sort/heap_sort.c)
 
 [Quicksort](./II%20Sorting%20and%20Statistics/7%20Quicksort/quicksort/quicksort.c)
 
