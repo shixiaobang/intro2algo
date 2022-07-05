@@ -5,7 +5,7 @@
 
 typedef struct
 {
-    int *p_key;
+    int *keys;
     int top;
     int size;
 } stack;
