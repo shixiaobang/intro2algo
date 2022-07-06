@@ -66,7 +66,7 @@ int sll_length(sll *head)
     }
 }
 
-int sll_search(sll *head, int key)
+sll_element *sll_search(sll *head, int key)
 {
     const sll_element *p = *head;
 
@@ -75,16 +75,15 @@ int sll_search(sll *head, int key)
     {
         if (p->key == key)
         {
-            return index;
+            return (sll_element *)p;
         }
         else
         {
             p = p->next;
-            index++;
         }
     }
 
-    return -1;
+    return NULL;
 }
 
 int sll_prepend(sll *head, int key)
