@@ -69,8 +69,6 @@ int sll_length(sll *head)
 sll_element *sll_search(sll *head, int key)
 {
     const sll_element *p = *head;
-
-    int index = -1;
     while (p != NULL)
     {
         if (p->key == key)
@@ -89,7 +87,6 @@ sll_element *sll_search(sll *head, int key)
 int sll_prepend(sll *head, int key)
 {
     sll_element *element = element_ctor(key);
-
     if (*head == NULL)
     {
         *head = element;
