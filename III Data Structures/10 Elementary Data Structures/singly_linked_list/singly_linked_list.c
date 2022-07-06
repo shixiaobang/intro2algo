@@ -34,6 +34,10 @@ int sll_dtor(sll *head)
         free(*head);
         *head = NULL;
 
+        free(head);
+        /* head = NULL */
+        // set pointer to null is invalid here, please remember to do this in the main function
+
         return 0;
     }
     else
@@ -65,6 +69,7 @@ int sll_length(sll *head)
 int sll_search(sll *head, int key)
 {
     const sll_element *p = *head;
+
     int index = -1;
     while (p != NULL)
     {
@@ -85,6 +90,7 @@ int sll_search(sll *head, int key)
 int sll_prepend(sll *head, int key)
 {
     sll_element *element = element_ctor(key);
+
     if (*head == NULL)
     {
         *head = element;
