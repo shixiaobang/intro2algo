@@ -18,8 +18,8 @@ int sll_dtor(sll *head);
 // Return the length of a singly linked list
 int sll_length(sll *head);
 
-// Return the index of an element with a specific key value in a singly linked list
-int sll_search(sll *head, int key);
+// Return an element with a specific key value in a singly linked list
+sll_element* sll_search(sll *head, int key);
 
 // Insert a new element at the head of a singly linked list
 int sll_prepend(sll *head, int key);
