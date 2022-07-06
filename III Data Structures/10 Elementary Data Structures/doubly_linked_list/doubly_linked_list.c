@@ -35,6 +35,10 @@ int dll_dtor(dll *head)
         free(*head);
         *head = NULL;
 
+        free(head);
+        /* head = NULL */
+        // set pointer to null is invalid here, please remember to do this in the main function
+
         return 0;
     }
     else
@@ -63,24 +67,22 @@ int dll_length(dll *head)
     }
 }
 
-int dll_search(dll *head, int key)
+dll_element *dll_search(dll *head, int key)
 {
     const dll_element *p = *head;
-    int index = -1;
     while (p != NULL)
     {
         if (p->key == key)
         {
-            return index;
+            return (dll_element *)p;
         }
         else
         {
             p = p->next;
-            index++;
         }
     }
 
-    return -1;
+    return NULL;
 }
 
 int dll_prepend(dll *head, int key)
