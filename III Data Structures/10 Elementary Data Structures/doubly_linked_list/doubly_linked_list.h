@@ -20,7 +20,7 @@ int dll_dtor(dll *head);
 int dll_length(dll *head);
 
 // Return the index of an element with a specific key value in a doubly linked list
-int dll_search(dll *head, int key);
+dll_element * dll_search(dll *head, int key);
 
 // Insert a new element at the head of a doubly linked list
 int dll_prepend(dll *head, int key);
