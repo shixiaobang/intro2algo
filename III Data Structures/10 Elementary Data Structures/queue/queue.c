@@ -17,7 +17,10 @@ queue *queue_ctor(int size)
 int queue_dtor(queue *q)
 {
     free(q->keys);
+    q->keys = NULL;
+
     free(q);
+    q = NULL;
 
     return 0;
 }
