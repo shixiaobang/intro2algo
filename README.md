@@ -7,19 +7,23 @@ Data Structure &amp; Algorithm Implementation
 
 ### II Sorting and Statistics
 
-[Binary Heap](./II%20Sorting%20and%20Statistics/6%20Heapsort/binary_heap/binary_heap.c)
+[Binary Heap](./II%20Sorting%20and%20Statistics/6%20Heapsort/binary_heap/binary_heap.h)
 
 ### III Data Structures
 
-[Stack](./III%20Data%20Structures/10%20Elementary%20Data%20Structures/stack/stack.c)
+[Stack](./III%20Data%20Structures/10%20Elementary%20Data%20Structures/stack/stack.h)
 
-[Queue](./III%20Data%20Structures/10%20Elementary%20Data%20Structures/queue/queue.c)
+[Queue](./III%20Data%20Structures/10%20Elementary%20Data%20Structures/queue/queue.h)
 
-[Deque](./III%20Data%20Structures/10%20Elementary%20Data%20Structures/deque/deque.c)
+[Deque](./III%20Data%20Structures/10%20Elementary%20Data%20Structures/deque/deque.h)
 
-[Singly Linked List](./III%20Data%20Structures/10%20Elementary%20Data%20Structures/singly_linked_list/singly_linked_list.c)
+[Singly Linked List](./III%20Data%20Structures/10%20Elementary%20Data%20Structures/singly_linked_list/singly_linked_list.h)
 
-[Doubly Linked List](./III%20Data%20Structures/10%20Elementary%20Data%20Structures/doubly_linked_list/doubly_linked_list.c)
+[Doubly Linked List](./III%20Data%20Structures/10%20Elementary%20Data%20Structures/doubly_linked_list/doubly_linked_list.h)
+
+### VI Graph Algorithms
+
+[Adjacency List](./VI%20Graph%20Algorithms/20%20Elementary%20Graph%20Algorithms/adjacency_list/adjacency_list.h)
 
 ## Algorithm
 
