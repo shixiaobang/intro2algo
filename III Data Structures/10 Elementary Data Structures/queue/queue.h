@@ -15,7 +15,7 @@ typedef struct
 queue *queue_ctor(int n);
 
 // Destroy a queue
-int queue_dtor(queue *q);
+int queue_dtor(queue **q);
 
 // Test whether the queue is empty
 bool queue_empty(const queue *q);
