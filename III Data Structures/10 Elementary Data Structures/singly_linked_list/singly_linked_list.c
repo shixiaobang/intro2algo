@@ -18,22 +18,22 @@ sll *sll_ctor()
 
 int sll_dtor(sll **head)
 {
-    if (*head != NULL)
+    if (**head != NULL)
     {
         const sll_element *p = (**head)->next;
         while (p != NULL)
         {
-            free(*head);
-            *head = NULL;
+            free(**head);
+            **head = NULL;
 
-            *head = (sll_element *)p;
+            **head = (sll_element *)p;
             p = (**head)->next;
         }
+        free(**head);
+        **head = NULL;
+
         free(*head);
         *head = NULL;
-
-        free(head);
-        head = NULL;
 
         return 0;
     }
