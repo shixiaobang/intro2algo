@@ -18,25 +18,24 @@ sll *sll_ctor()
     return head;
 }
 
-int sll_dtor(sll *head)
+int sll_dtor(sll **head)
 {
     if (*head != NULL)
     {
-        const sll_element *p = (*head)->next;
+        const sll_element *p = (**head)->next;
         while (p != NULL)
         {
             free(*head);
             *head = NULL;
 
             *head = (sll_element *)p;
-            p = (*head)->next;
+            p = (**head)->next;
         }
         free(*head);
         *head = NULL;
 
         free(head);
-        /* head = NULL */
-        // set pointer to null is invalid here, please remember to do this in the main function
+        head = NULL;
 
         return 0;
     }
