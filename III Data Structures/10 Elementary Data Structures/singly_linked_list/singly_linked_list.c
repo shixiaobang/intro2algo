@@ -1,14 +1,12 @@
 #include "singly_linked_list.h"
 #include <stdlib.h>
 
-sll_element *element_ctor(int key)
-{
-    sll_element *element = (sll_element *)malloc(sizeof(sll_element));
-    element->key = key;
-    element->next = NULL;
-
-    return element;
-}
+/**
+ * Initialize a singly linked list element
+ * @param key key value of element
+ * @return pointer to singly linked list element
+ */ 
+static sll_element *element_ctor(int key);
 
 sll *sll_ctor()
 {
@@ -206,4 +204,13 @@ int sll_key(sll *head, int index)
     {
         return -1;
     }
+}
+
+static sll_element *element_ctor(int key)
+{
+    sll_element *element = (sll_element *)malloc(sizeof(sll_element));
+    element->key = key;
+    element->next = NULL;
+
+    return element;
 }
