@@ -1,5 +1,4 @@
 #include "queue.h"
-
 #include <stdlib.h>
 
 queue *queue_ctor(int size)
@@ -14,13 +13,13 @@ queue *queue_ctor(int size)
     return q;
 }
 
-int queue_dtor(queue *q)
+int queue_dtor(queue **q)
 {
-    free(q->keys);
-    q->keys = NULL;
+    free((*q)->keys);
+    (*q)->keys = NULL;
 
-    free(q);
-    q = NULL;
+    free(*q);
+    *q = NULL;
 
     return 0;
 }
