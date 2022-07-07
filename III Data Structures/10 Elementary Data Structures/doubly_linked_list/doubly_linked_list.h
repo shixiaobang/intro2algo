@@ -14,13 +14,13 @@ typedef dll_element *dll;
 dll *dll_ctor();
 
 // Destroy a doubly linked list
-int dll_dtor(dll *head);
+int dll_dtor(dll **head);
 
 // Return the length of a doubly linked list
 int dll_length(dll *head);
 
 // Return the index of an element with a specific key value in a doubly linked list
-dll_element * dll_search(dll *head, int key);
+dll_element *dll_search(dll *head, int key);
 
 // Insert a new element at the head of a doubly linked list
 int dll_prepend(dll *head, int key);
