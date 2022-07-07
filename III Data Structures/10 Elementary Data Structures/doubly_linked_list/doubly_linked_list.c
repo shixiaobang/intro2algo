@@ -1,15 +1,12 @@
 #include "doubly_linked_list.h"
 #include <stdlib.h>
 
-dll_element *element_ctor(int key)
-{
-    dll_element *element = (dll_element *)malloc(sizeof(dll_element));
-    element->key = key;
-    element->prev = NULL;
-    element->next = NULL;
-
-    return element;
-}
+/**
+ * Initialize a doubly linked list element
+ * @param key key value of element
+ * @return pointer to doubly linked list element
+ */
+static dll_element *element_ctor(int key);
 
 dll *dll_ctor()
 {
@@ -19,25 +16,24 @@ dll *dll_ctor()
     return head;
 }
 
-int dll_dtor(dll *head)
+int dll_dtor(dll **head)
 {
-    if (*head != NULL)
+    if (**head != NULL)
     {
-        const dll_element *p = (*head)->next;
+        const dll_element *p = (**head)->next;
         while (p != NULL)
         {
-            free(*head);
-            *head = NULL;
+            free(**head);
+            **head = NULL;
 
-            *head = (dll_element *)p;
-            p = (*head)->next;
+            **head = (dll_element *)p;
+            p = (**head)->next;
         }
+        free(**head);
+        **head = NULL;
+
         free(*head);
         *head = NULL;
-
-        free(head);
-        /* head = NULL */
-        // set pointer to null is invalid here, please remember to do this in the main function
 
         return 0;
     }
@@ -233,4 +229,14 @@ int dll_key(dll *head, int index)
     {
         return -1;
     }
+}
+
+static dll_element *element_ctor(int key)
+{
+    dll_element *element = (dll_element *)malloc(sizeof(dll_element));
+    element->key = key;
+    element->prev = NULL;
+    element->next = NULL;
+
+    return element;
 }
