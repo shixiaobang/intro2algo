@@ -1,20 +1,20 @@
 #include "binary_tree.h"
 #include <stdlib.h>
 
-binary_tree *binary_tree_ctor()
+bint *bint_ctor()
 {
-    binary_tree *root = (binary_tree *)malloc(sizeof(binary_tree));
+    bint *root = (bint *)malloc(sizeof(bint));
     *root = NULL;
 
     return root;
 }
 
-int binary_tree_dtor(binary_tree *root)
+int bint_dtor(bint *root)
 {
     if (*root != NULL)
     {
-        binary_tree_dtor(&((*root)->left_child));
-        binary_tree_dtor(&((*root)->right_child));
+        bint_dtor(&((*root)->left_child));
+        bint_dtor(&((*root)->right_child));
 
         free(*root);
         *root = NULL;
