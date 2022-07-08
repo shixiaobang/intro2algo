@@ -19,7 +19,7 @@ graph_al *graph_al_ctor(const int v);
 
 /**
  * Destroy a graph represented by an adjacency list
- * @param graph pointer to graph
+ * @param graph double pointer to graph
  */
 int graph_al_dtor(graph_al **graph);
 
