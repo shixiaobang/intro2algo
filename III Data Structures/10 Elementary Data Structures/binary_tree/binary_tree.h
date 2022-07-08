@@ -7,12 +7,20 @@ typedef struct binary_tree_node
     struct binary_tree_node *parent;
     struct binary_tree_node *left_child;
     struct binary_tree_node *right_child;
-} binary_tree_node;
+} bint_node;
 
-typedef binary_tree_node *binary_tree;
+typedef bint_node *bint;
 
-binary_tree *binary_tree_ctor();
+/**
+ * Initialize a binary tree
+ * @return pointer to the root of binary tree
+ */
+bint *bint_ctor();
 
-int binary_tree_dtor(binary_tree *root);
+/**
+ * Destroy a binary tree
+ * @param root pointer to the root of binary tree
+ */
+int bint_dtor(bint *root);
 
 #endif // BINARY_TREE_H
