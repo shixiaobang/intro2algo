@@ -10,8 +10,8 @@
 static wal_element *wal_element_ctor(const int index, const int weight);
 
 /**
- * Destroy a weighted adjacency list
- * @param head head of weighted adjacency list
+ * Destroy a weighted graph's adjacency list
+ * @param head head of adjacency list
  */
 static int wal_dtor(wal *head);
 
