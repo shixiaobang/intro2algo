@@ -24,7 +24,7 @@ int dll_dtor(dll **head)
         while (p != NULL)
         {
             free(**head);
-            **head = NULL;
+            // **head = NULL;
 
             **head = (dll_element *)p;
             p = (**head)->next;
