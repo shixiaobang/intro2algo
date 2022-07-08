@@ -1,4 +1,5 @@
 #include "doubly_linked_list.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 /**
@@ -24,7 +25,7 @@ int dll_dtor(dll **head)
         while (p != NULL)
         {
             free(**head);
-            // **head = NULL;
+            /* **head = NULL; */
 
             **head = (dll_element *)p;
             p = (**head)->next;
@@ -125,41 +126,43 @@ int dll_insert(dll *head, int index, int key)
     int length = dll_length(head);
     if (index > -1 && index < length)
     {
-        if (*head == NULL)
+
+        dll_element *element = element_ctor(key);
+        dll_element *predecessor = *head;
+        for (int i = 0; i < index; i++)
         {
-            dll_prepend(head, key);
+            predecessor = predecessor->next;
+        }
+
+        dll_element *successor = predecessor->next;
+
+        predecessor->next = element;
+        element->prev = predecessor;
+
+        if (successor != NULL) // if the element at a specific index is not the tail of a doubly linked list
+        {
+            successor->prev = element;
+            element->next = successor;
         }
         else
         {
-            dll_element *element = element_ctor(key);
-            dll_element *predecessor = *head;
-            for (int i = 0; i < index; i++)
-            {
-                predecessor = predecessor->next;
-            }
-
-            dll_element *successor = predecessor->next;
-
-            predecessor->next = element;
-            element->prev = predecessor;
-
-            // If the element at a specific index is not the tail of a doubly linked list
-            if (successor != NULL)
-            {
-                successor->prev = element;
-                element->next = successor;
-            }
-            else
-            {
-                /* do nothing */
-            }
+            /* do nothing */
         }
 
         return 0;
     }
     else
     {
-        return 1;
+        if (*head == NULL)
+        {
+            dll_prepend(head, key);
+
+            return 0;
+        }
+        else
+        {
+            return 1;
+        }
     }
 }
 
@@ -194,8 +197,7 @@ int dll_delete(dll *head, int index)
 
             predecessor->next = successor;
 
-            // If the element at a specific index is not the tail of a doubly linked list
-            if (successor != NULL)
+            if (successor != NULL) // if the element at a specific index is not the tail of a doubly linked list
             {
                 successor->prev = predecessor;
             }
