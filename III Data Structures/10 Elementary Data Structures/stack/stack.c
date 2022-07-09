@@ -12,10 +12,13 @@ stack *stack_ctor(int size)
     return s;
 }
 
-int stack_dtor(stack *s)
+int stack_dtor(stack **s)
 {
-    free(s->keys);
-    free(s);
+    free((*s)->keys);
+    (*s)->keys = NULL;
+
+    free(*s);
+    *s = NULL;
 
     return 0;
 }
