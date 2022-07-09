@@ -14,7 +14,7 @@ typedef struct
 stack *stack_ctor(int size);
 
 // Destroy a stack
-int stack_dtor(stack *s);
+int stack_dtor(stack **s);
 
 // Test whether the queue is empty
 bool stack_empty(const stack *s);
