@@ -23,6 +23,8 @@ Data Structure &amp; Algorithm Implementation
 
 [Circular Doubly Linked List](./III%20Data%20Structures/10%20Elementary%20Data%20Structures/circular_doubly_linked_list/circular_doubly_linked_list.h)
 
+[Binary Search Tree](./III%20Data%20Structures/12%20Binary%20Search%20Tree/binary_search_tree.h)
+
 ### VI Graph Algorithms
 
 [Adjacency List](./VI%20Graph%20Algorithms/20%20Elementary%20Graph%20Algorithms/adjacency_list/adjacency_list.h)
