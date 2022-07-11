@@ -1,7 +1,7 @@
 #if !defined(BINARY_SEARCH_TREE_H)
 #define BINARY_SEARCH_TREE_H
 
-#include "../10 Elementary Data Structures/binary_tree/binary_tree.h"
+#include "../../10 Elementary Data Structures/binary_tree/binary_tree.h"
 
 typedef bint_node binst_node;
 
