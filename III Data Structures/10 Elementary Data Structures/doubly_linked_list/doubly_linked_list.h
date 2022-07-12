@@ -6,35 +6,72 @@ typedef struct doubly_linked_list_element
     int key;
     struct doubly_linked_list_element *prev;
     struct doubly_linked_list_element *next;
-} dll_element;
+} dllist_element;
 
-typedef dll_element *dll;
+typedef dllist_element *dllist;
 
-// Initialize a doubly linked list
-dll *dll_ctor();
+/**
+ * Initialize a doubly linked list
+ * @return pointer to the head of doubly linked list
+ */
+dllist *dllist_ctor();
 
-// Destroy a doubly linked list
-int dll_dtor(dll **head);
+/**
+ * Destroy a doubly linked list
+ * @param head double pointer to the head of doubly linked list
+ */
+int dllist_dtor(dllist **head);
 
-// Return the length of a doubly linked list
-int dll_length(dll *head);
+/**
+ * Return the length of a doubly linked list
+ * @param head pointer to the head of doubly linked list
+ */
+int dllist_length(dllist *head);
 
-// Return the index of an element with a specific key value in a doubly linked list
-dll_element *dll_search(dll *head, int key);
+/**
+ * Return an element with a specific key value in a doubly linked list
+ * @param head pointer to the head of doubly linked list
+ * @param key a specific key value
+ * @return pointer to an element
+ */
+dllist_element *dllist_search(dllist *head, int key);
 
-// Insert a new element at the head of a doubly linked list
-int dll_prepend(dll *head, int key);
+/**
+ * Insert a new element at the head of a doubly linked list
+ * @param head pointer to the head of doubly linked list
+ * @param key key value of new element
+ */
+int dllist_prepend(dllist *head, int key);
 
-// Insert a new element at the tail of a doubly linked list
-int dll_append(dll *head, int key);
+/**
+ * Insert a new element at the tail of a doubly linked list
+ * @param head pointer to the head of doubly linked list
+ * @param key key value of new element
+ */
+int dllist_append(dllist *head, int key);
 
-// Insert a new element after an element at a specific index in a doubly linked list
-int dll_insert(dll *head, int index, int key);
+/**
+ * Insert a new element after an element at a specific index in a doubly linked list
+ * @param head pointer to the head of doubly linked list
+ * @param index a specific index
+ * @param key key value of new element
+ */
+int dllist_insert(dllist *head, int index, int key);
 
-// Delete an element at a specific index in a doubly linked list
-int dll_delete(dll *head, int index);
 
-// Return key value from specific index of doubly linked list
-int dll_key(dll *head, int index);
+/**
+ * Delete an element at a specific index in a doubly linked list
+ * @param head pointer to the head of doubly linked list
+ * @param index a specific index
+ */
+int dllist_delete(dllist *head, int index);
+
+
+/**
+ * RReturn key value from specific index of doubly linked list
+ * @param head pointer to the head of doubly linked list
+ * @param index a specific index
+ */
+int dllist_key(dllist *head, int index);
 
 #endif // DOUBLY_LINKED_LIST_H
