@@ -6,27 +6,27 @@
  * @param key key value of element
  * @return pointer to singly linked list element
  */ 
-static sll_element *element_ctor(int key);
+static sllist_element *element_ctor(int key);
 
-sll *sll_ctor()
+sllist *sllist_ctor()
 {
-    sll *head = (sll *)malloc(sizeof(sll));
+    sllist *head = (sllist *)malloc(sizeof(sllist));
     *head = NULL;
 
     return head;
 }
 
-int sll_dtor(sll **head)
+int sllist_dtor(sllist **head)
 {
     if (**head != NULL)
     {
-        const sll_element *p = (**head)->next;
+        const sllist_element *p = (**head)->next;
         while (p != NULL)
         {
             free(**head);
             **head = NULL;
 
-            **head = (sll_element *)p;
+            **head = (sllist_element *)p;
             p = (**head)->next;
         }
         free(**head);
@@ -43,7 +43,7 @@ int sll_dtor(sll **head)
     }
 }
 
-int sll_length(sll *head)
+int sllist_length(sllist *head)
 {
     if (*head == NULL)
     {
@@ -51,7 +51,7 @@ int sll_length(sll *head)
     }
     else
     {
-        const sll_element *p = *head;
+        const sllist_element *p = *head;
         int length = 0;
         while (p != NULL)
         {
@@ -63,14 +63,14 @@ int sll_length(sll *head)
     }
 }
 
-sll_element *sll_search(sll *head, int key)
+sllist_element *sllist_search(sllist *head, int key)
 {
-    const sll_element *p = *head;
+    const sllist_element *p = *head;
     while (p != NULL)
     {
         if (p->key == key)
         {
-            return (sll_element *)p;
+            return (sllist_element *)p;
         }
         else
         {
@@ -81,9 +81,9 @@ sll_element *sll_search(sll *head, int key)
     return NULL;
 }
 
-int sll_prepend(sll *head, int key)
+int sllist_prepend(sllist *head, int key)
 {
-    sll_element *element = element_ctor(key);
+    sllist_element *element = element_ctor(key);
     if (*head == NULL)
     {
         *head = element;
@@ -97,16 +97,16 @@ int sll_prepend(sll *head, int key)
     return 0;
 }
 
-int sll_append(sll *head, int key)
+int sllist_append(sllist *head, int key)
 {
-    sll_element *element = element_ctor(key);
+    sllist_element *element = element_ctor(key);
     if (*head == NULL)
     {
         *head = element;
     }
     else
     {
-        sll_element *tail = *head;
+        sllist_element *tail = *head;
         while (tail->next != NULL)
         {
             tail = tail->next;
@@ -117,25 +117,25 @@ int sll_append(sll *head, int key)
     return 0;
 }
 
-int sll_insert(sll *head, int index, int key)
+int sllist_insert(sllist *head, int index, int key)
 {
-    int length = sll_length(head);
+    int length = sllist_length(head);
     if (index > -1 && index < length)
     {
         if (*head == NULL)
         {
-            sll_prepend(head, key);
+            sllist_prepend(head, key);
         }
         else
         {
-            sll_element *element = element_ctor(key);
-            sll_element *predecessor = *head;
+            sllist_element *element = element_ctor(key);
+            sllist_element *predecessor = *head;
             for (int i = 0; i < index; i++)
             {
                 predecessor = predecessor->next;
             }
 
-            sll_element *successor = predecessor->next;
+            sllist_element *successor = predecessor->next;
             predecessor->next = element;
 
             element->next = successor;
@@ -149,14 +149,14 @@ int sll_insert(sll *head, int index, int key)
     }
 }
 
-int sll_delete(sll *head, int index)
+int sllist_delete(sllist *head, int index)
 {
-    int length = sll_length(head);
+    int length = sllist_length(head);
     if (index > -1 && index < length && *head != NULL)
     {
         if (index == 0)
         {
-            sll_element *successor = (*head)->next;
+            sllist_element *successor = (*head)->next;
 
             free(*head);
             *head = NULL;
@@ -165,14 +165,14 @@ int sll_delete(sll *head, int index)
         }
         else
         {
-            sll_element *predecessor = *head;
+            sllist_element *predecessor = *head;
             for (int i = 0; i < index - 1; i++)
             {
                 predecessor = predecessor->next;
             }
 
-            sll_element *element = predecessor->next;
-            sll_element *successor = element->next;
+            sllist_element *element = predecessor->next;
+            sllist_element *successor = element->next;
 
             free(element);
             element = NULL;
@@ -188,12 +188,12 @@ int sll_delete(sll *head, int index)
     }
 }
 
-int sll_key(sll *head, int index)
+int sllist_key(sllist *head, int index)
 {
-    int length = sll_length(head);
+    int length = sllist_length(head);
     if (index > -1 && index < length)
     {
-        const sll_element *p = *head;
+        const sllist_element *p = *head;
         for (int i = 0; i < index; i++)
         {
             p = p->next;
@@ -206,9 +206,9 @@ int sll_key(sll *head, int index)
     }
 }
 
-static sll_element *element_ctor(int key)
+static sllist_element *element_ctor(int key)
 {
-    sll_element *element = (sll_element *)malloc(sizeof(sll_element));
+    sllist_element *element = (sllist_element *)malloc(sizeof(sllist_element));
     element->key = key;
     element->next = NULL;
 
