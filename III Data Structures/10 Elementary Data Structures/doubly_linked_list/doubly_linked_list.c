@@ -7,27 +7,27 @@
  * @param key key value of element
  * @return pointer to doubly linked list element
  */
-static dll_element *element_ctor(int key);
+static dllist_element *element_ctor(int key);
 
-dll *dll_ctor()
+dllist *dllist_ctor()
 {
-    dll *head = (dll *)malloc(sizeof(dll));
+    dllist *head = (dllist *)malloc(sizeof(dllist));
     *head = NULL;
 
     return head;
 }
 
-int dll_dtor(dll **head)
+int dllist_dtor(dllist **head)
 {
     if (**head != NULL)
     {
-        const dll_element *p = (**head)->next;
+        const dllist_element *p = (**head)->next;
         while (p != NULL)
         {
             free(**head);
             /* **head = NULL; */
 
-            **head = (dll_element *)p;
+            **head = (dllist_element *)p;
             p = (**head)->next;
         }
         free(**head);
@@ -44,7 +44,7 @@ int dll_dtor(dll **head)
     }
 }
 
-int dll_length(dll *head)
+int dllist_length(dllist *head)
 {
     if (*head == NULL)
     {
@@ -52,7 +52,7 @@ int dll_length(dll *head)
     }
     else
     {
-        const dll_element *p = *head;
+        const dllist_element *p = *head;
         int length = 0;
         while (p != NULL)
         {
@@ -64,14 +64,14 @@ int dll_length(dll *head)
     }
 }
 
-dll_element *dll_search(dll *head, int key)
+dllist_element *dllist_search(dllist *head, int key)
 {
-    const dll_element *p = *head;
+    const dllist_element *p = *head;
     while (p != NULL)
     {
         if (p->key == key)
         {
-            return (dll_element *)p;
+            return (dllist_element *)p;
         }
         else
         {
@@ -82,9 +82,9 @@ dll_element *dll_search(dll *head, int key)
     return NULL;
 }
 
-int dll_prepend(dll *head, int key)
+int dllist_prepend(dllist *head, int key)
 {
-    dll_element *element = element_ctor(key);
+    dllist_element *element = element_ctor(key);
 
     if (*head == NULL)
     {
@@ -100,16 +100,16 @@ int dll_prepend(dll *head, int key)
     return 0;
 }
 
-int dll_append(dll *head, int key)
+int dllist_append(dllist *head, int key)
 {
-    dll_element *element = element_ctor(key);
+    dllist_element *element = element_ctor(key);
     if (*head == NULL)
     {
         *head = element;
     }
     else
     {
-        dll_element *tail = *head;
+        dllist_element *tail = *head;
         while (tail->next != NULL)
         {
             tail = tail->next;
@@ -121,20 +121,20 @@ int dll_append(dll *head, int key)
     return 0;
 }
 
-int dll_insert(dll *head, int index, int key)
+int dllist_insert(dllist *head, int index, int key)
 {
-    int length = dll_length(head);
+    int length = dllist_length(head);
     if (index > -1 && index < length)
     {
 
-        dll_element *element = element_ctor(key);
-        dll_element *predecessor = *head;
+        dllist_element *element = element_ctor(key);
+        dllist_element *predecessor = *head;
         for (int i = 0; i < index; i++)
         {
             predecessor = predecessor->next;
         }
 
-        dll_element *successor = predecessor->next;
+        dllist_element *successor = predecessor->next;
 
         predecessor->next = element;
         element->prev = predecessor;
@@ -155,7 +155,7 @@ int dll_insert(dll *head, int index, int key)
     {
         if (*head == NULL)
         {
-            dll_prepend(head, key);
+            dllist_prepend(head, key);
 
             return 0;
         }
@@ -166,14 +166,14 @@ int dll_insert(dll *head, int index, int key)
     }
 }
 
-int dll_delete(dll *head, int index)
+int dllist_delete(dllist *head, int index)
 {
-    int length = dll_length(head);
+    int length = dllist_length(head);
     if (index > -1 && index < length && *head != NULL)
     {
         if (index == 0)
         {
-            dll_element *successor = (*head)->next;
+            dllist_element *successor = (*head)->next;
 
             free(*head);
             *head = NULL;
@@ -183,14 +183,14 @@ int dll_delete(dll *head, int index)
         }
         else
         {
-            dll_element *element = *head;
+            dllist_element *element = *head;
             for (int i = 0; i < index; i++)
             {
                 element = element->next;
             }
 
-            dll_element *predecessor = element->prev;
-            dll_element *successor = element->next;
+            dllist_element *predecessor = element->prev;
+            dllist_element *successor = element->next;
 
             free(element);
             element = NULL;
@@ -215,12 +215,12 @@ int dll_delete(dll *head, int index)
     }
 }
 
-int dll_key(dll *head, int index)
+int dllist_key(dllist *head, int index)
 {
-    int length = dll_length(head);
+    int length = dllist_length(head);
     if (index > -1 && index < length)
     {
-        const dll_element *p = *head;
+        const dllist_element *p = *head;
         for (int i = 0; i < index; i++)
         {
             p = p->next;
@@ -233,9 +233,9 @@ int dll_key(dll *head, int index)
     }
 }
 
-static dll_element *element_ctor(int key)
+static dllist_element *element_ctor(int key)
 {
-    dll_element *element = (dll_element *)malloc(sizeof(dll_element));
+    dllist_element *element = (dllist_element *)malloc(sizeof(dllist_element));
     element->key = key;
     element->prev = NULL;
     element->next = NULL;
