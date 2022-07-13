@@ -7,12 +7,12 @@
  * @param key key value of element
  * @return pointer to circular doubly linked list element
  */
-static cdll_element *element_ctor(int key);
+static cdllist_element *element_ctor(int key);
 
-cdll *cdll_ctor()
+cdllist *cdllist_ctor()
 {
-    cdll *sentinel = (cdll *)malloc(sizeof(cdll));
-    cdll_element *nil = (cdll_element *)malloc(sizeof(cdll_element)); // initialize a sentinel element of circular doubly linked list
+    cdllist *sentinel = (cdllist *)malloc(sizeof(cdllist));
+    cdllist_element *nil = (cdllist_element *)malloc(sizeof(cdllist_element)); // initialize a sentinel element of circular doubly linked list
     nil->prev = nil;
     nil->next = nil;
     *sentinel = nil;
@@ -20,18 +20,18 @@ cdll *cdll_ctor()
     return sentinel;
 }
 
-int cdll_dtor(cdll **sentinel)
+int cdllist_dtor(cdllist **sentinel)
 {
     if (**sentinel != NULL)
     {
-        const cdll_element *p = (**sentinel)->next; // p is the head of circular doubly linked list
-        const cdll_element *nil = **sentinel;       // pointer to the sentinel element of circular doubly linked list
+        const cdllist_element *p = (**sentinel)->next; // p is the head of circular doubly linked list
+        const cdllist_element *nil = **sentinel;       // pointer to the sentinel element of circular doubly linked list
         while (p != nil)
         {
             free(**sentinel);
             // **sentinel = NULL;
 
-            **sentinel = (cdll_element *)p;
+            **sentinel = (cdllist_element *)p;
             p = (**sentinel)->next;
         }
         free(**sentinel);
@@ -48,7 +48,7 @@ int cdll_dtor(cdll **sentinel)
     }
 }
 
-int cdll_length(cdll *sentinel)
+int cdllist_length(cdllist *sentinel)
 {
     if ((*sentinel)->next == *sentinel)
     {
@@ -56,7 +56,7 @@ int cdll_length(cdll *sentinel)
     }
     else
     {
-        const cdll_element *p = (*sentinel)->next;
+        const cdllist_element *p = (*sentinel)->next;
         int length = 0;
         while (p != *sentinel)
         {
@@ -68,14 +68,14 @@ int cdll_length(cdll *sentinel)
     }
 }
 
-cdll_element *cdll_search(cdll *sentinel, int key)
+cdllist_element *cdllist_search(cdllist *sentinel, int key)
 {
-    const cdll_element *p = (*sentinel)->next;
+    const cdllist_element *p = (*sentinel)->next;
     while (p != *sentinel)
     {
         if (p->key == key)
         {
-            return (cdll_element *)p;
+            return (cdllist_element *)p;
         }
         else
         {
@@ -86,11 +86,11 @@ cdll_element *cdll_search(cdll *sentinel, int key)
     return NULL;
 }
 
-int cdll_prepend(cdll *sentinel, int key)
+int cdllist_prepend(cdllist *sentinel, int key)
 {
     if (*sentinel != NULL)
     {
-        cdll_element *element = element_ctor(key);
+        cdllist_element *element = element_ctor(key);
 
         element->next = (*sentinel)->next;
         (*sentinel)->next->prev = element;
@@ -105,12 +105,12 @@ int cdll_prepend(cdll *sentinel, int key)
     }
 }
 
-int cdll_append(cdll *sentinel, int key)
+int cdllist_append(cdllist *sentinel, int key)
 {
     if (*sentinel != NULL)
     {
-        cdll_element *element = element_ctor(key);
-        cdll_element *tail = *sentinel;
+        cdllist_element *element = element_ctor(key);
+        cdllist_element *tail = *sentinel;
         while (tail->next != *sentinel)
         {
             tail = tail->next;
@@ -126,19 +126,19 @@ int cdll_append(cdll *sentinel, int key)
     }
 }
 
-int cdll_insert(cdll *sentinel, int index, int key)
+int cdllist_insert(cdllist *sentinel, int index, int key)
 {
-    int length = cdll_length(sentinel);
+    int length = cdllist_length(sentinel);
     if (index > -1 && index < length)
     {
-        cdll_element *element = element_ctor(key);
-        cdll_element *predecessor = (*sentinel)->next;
+        cdllist_element *element = element_ctor(key);
+        cdllist_element *predecessor = (*sentinel)->next;
         for (int i = 0; i < index; i++)
         {
             predecessor = predecessor->next;
         }
 
-        cdll_element *successor = predecessor->next;
+        cdllist_element *successor = predecessor->next;
 
         predecessor->next = element;
         element->prev = predecessor;
@@ -154,20 +154,20 @@ int cdll_insert(cdll *sentinel, int index, int key)
     }
 }
 
-int cdll_delete(cdll *sentinel, int index)
+int cdllist_delete(cdllist *sentinel, int index)
 {
-    int length = cdll_length(sentinel);
+    int length = cdllist_length(sentinel);
     if (index > -1 && index < length && *sentinel != NULL)
     {
         if ((*sentinel)->next != *sentinel)
         {
-            cdll_element *element = (*sentinel)->next;
+            cdllist_element *element = (*sentinel)->next;
             for (int i = 0; i < index; i++)
             {
                 element = element->next;
             }
-            cdll_element *predecessor = element->prev;
-            cdll_element *successor = element->next;
+            cdllist_element *predecessor = element->prev;
+            cdllist_element *successor = element->next;
 
             free(element);
             element = NULL;
@@ -188,12 +188,12 @@ int cdll_delete(cdll *sentinel, int index)
     }
 }
 
-int cdll_key(cdll *sentinel, int index)
+int cdllist_key(cdllist *sentinel, int index)
 {
-    int length = cdll_length(sentinel);
+    int length = cdllist_length(sentinel);
     if (index > -1 && index < length)
     {
-        const cdll_element *p = (*sentinel)->next;
+        const cdllist_element *p = (*sentinel)->next;
         for (int i = 0; i < index; i++)
         {
             p = p->next;
@@ -206,9 +206,9 @@ int cdll_key(cdll *sentinel, int index)
     }
 }
 
-static cdll_element *element_ctor(int key)
+static cdllist_element *element_ctor(int key)
 {
-    cdll_element *element = (cdll_element *)malloc(sizeof(cdll_element));
+    cdllist_element *element = (cdllist_element *)malloc(sizeof(cdllist_element));
     element->key = key;
     element->prev = NULL;
     element->next = NULL;
