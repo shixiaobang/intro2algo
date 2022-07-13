@@ -1,20 +1,20 @@
 #include "rooted_tree.h"
 #include <stdlib.h>
 
-rt *rt_ctor()
+rtree *rtree_ctor()
 {
-    rt *root = (rt *)malloc(sizeof(rt));
+    rtree *root = (rtree *)malloc(sizeof(rtree));
     *root = NULL;
 
     return root;
 }
 
-int rt_dtor(rt *root)
+int rtree_dtor(rtree *root)
 {
     if (*root != NULL)
     {
-        rt_dtor(&((*root)->left_child));
-        rt_dtor(&((*root)->right_sibling));
+        rtree_dtor(&((*root)->left_child));
+        rtree_dtor(&((*root)->right_sibling));
 
         free(*root);
         *root = NULL;
