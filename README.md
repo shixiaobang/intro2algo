@@ -25,6 +25,8 @@ Data Structure &amp; Algorithm Implementation
 
 [Binary Search Tree](./III%20Data%20Structures/12%20Binary%20Search%20Tree/binary_search_tree.h)
 
+[Red-Black Tree](./III%20Data%20Structures/13%20Red-Black%20Trees/red_black_tree/red_black_tree.h)
+
 ### VI Graph Algorithms
 
 [Adjacency List](./VI%20Graph%20Algorithms/20%20Elementary%20Graph%20Algorithms/adjacency_list/adjacency_list.h)
