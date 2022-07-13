@@ -6,17 +6,17 @@
  * @param index index of vertex
  * @return pointer to vertex
  */
-static al_element *al_element_ctor(const int index);
+static alist_element *alist_element_ctor(const int index);
 
 /**
  * Destroy a adjacency list
  * @param head
  */
-static int al_dtor(al *head);
+static int alist_dtor(alist *head);
 
-al *al_array_ctor(const int v)
+alist *alist_array_ctor(const int v)
 {
-    al *head = (al *)malloc(sizeof(al_element *) * v);
+    alist *head = (alist *)malloc(sizeof(alist_element *) * v);
     if (head != NULL)
     {
         for (int i = 0; i < v; i++)
@@ -32,11 +32,11 @@ al *al_array_ctor(const int v)
     return head;
 }
 
-int al_array_dtor(al **head, const int v)
+int alist_array_dtor(alist **head, const int v)
 {
     for (int i = 0; i < v; i++)
     {
-        al_dtor(*head + i);
+        alist_dtor(*head + i);
     }
     free(*head);
     *head = NULL;
@@ -44,9 +44,9 @@ int al_array_dtor(al **head, const int v)
     return 0;
 }
 
-int al_prepend(al *head, const int index)
+int alist_prepend(alist *head, const int index)
 {
-    al_element *element = al_element_ctor(index);
+    alist_element *element = alist_element_ctor(index);
     if (*head != NULL)
     {
         element->next = *head;
@@ -60,26 +60,26 @@ int al_prepend(al *head, const int index)
     return 0;
 }
 
-static al_element *al_element_ctor(const int index)
+static alist_element *alist_element_ctor(const int index)
 {
-    al_element *element = (al_element *)malloc(sizeof(al_element));
+    alist_element *element = (alist_element *)malloc(sizeof(alist_element));
     element->index = index;
     element->next = NULL;
 
     return element;
 }
 
-static int al_dtor(al *head)
+static int alist_dtor(alist *head)
 {
     if (*head != NULL)
     {
-        const al_element *p = (*head)->next;
+        const alist_element *p = (*head)->next;
         while (p != NULL)
         {
             free(*head);
             *head = NULL;
 
-            *head = (al_element *)p;
+            *head = (alist_element *)p;
             p = (*head)->next;
         }
         free(*head);
