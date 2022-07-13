@@ -7,20 +7,20 @@ typedef struct rooted_tree_node
     struct rooted_tree_node *parent;
     struct rooted_tree_node *left_child;
     struct rooted_tree_node *right_sibling;
-} rt_node;
+} rtree_node;
 
-typedef rt_node *rt;
+typedef rtree_node *rtree;
 
 /**
  * Initialize a rooted tree
  * @return pointer to the root of rooted tree
  */
-rt *rt_ctor();
+rtree *rtree_ctor();
 
 /**
  * Destroy a rooted tree
  * @param pointer to the root of rooted tree
  */
-int rt_dtor(rt *root);
+int rtree_dtor(rtree *root);
 
 #endif // ROOTED_TREE_H
