@@ -37,6 +37,10 @@ Data Structure &amp; Algorithm Implementation
 
 [Insertion Sort](./I%20Foundations/2%20Getting%20Started/insertion_sort/insertion_sort.c)
 
+[Bubble Sort](./I%20Foundations/2%20Getting%20Started/bubblesort/bubble_sort.c)
+
+[Horner's Rule](./I%20Foundations/2%20Getting%20Started/horners_rule/horners_rule.c)
+
 [Merge Sort](./I%20Foundations/2%20Getting%20Started/merge_sort/merge_sort.c)
 
 ### II Sorting and Statistics
