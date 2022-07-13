@@ -5,20 +5,20 @@
  * Destroy a subtree of binary tree (Postorder)
  * @param root pointer to the root of subtree
  */
-static int subtree_dtor(bint *root);
+static int subtree_dtor(bintree *root);
 
-bint *bint_ctor()
+bintree *bintree_ctor()
 {
-    bint *root = (bint *)malloc(sizeof(bint));
+    bintree *root = (bintree *)malloc(sizeof(bintree));
     *root = NULL;
 
     return root;
 }
 
-int bint_dtor(bint **root)
+int bintree_dtor(bintree **root)
 {
-    bint *left_root = &((**root)->left_child);   // pointer to the left subtree of root
-    bint *right_root = &((**root)->right_child); // pointer to the right subtree of root
+    bintree *left_root = &((**root)->left_child);   // pointer to the left subtree of root
+    bintree *right_root = &((**root)->right_child); // pointer to the right subtree of root
 
     subtree_dtor(left_root);
     subtree_dtor(right_root);
@@ -32,13 +32,13 @@ int bint_dtor(bint **root)
     return 0;
 }
 
-void bint_preorder_traversal(const bint *root)
+void bintree_preorder_traversal(const bintree *root)
 {
     if (*root != NULL)
     {
         /* do something on (*root) at here */
-        bint_preorder_traversal(&((*root)->left_child));
-        bint_preorder_traversal(&((*root)->right_child));
+        bintree_preorder_traversal(&((*root)->left_child));
+        bintree_preorder_traversal(&((*root)->right_child));
     }
     else
     {
@@ -46,13 +46,13 @@ void bint_preorder_traversal(const bint *root)
     }
 }
 
-void bint_inorder_traversal(const bint *root)
+void bintree_inorder_traversal(const bintree *root)
 {
     if (*root != NULL)
     {
-        bint_inorder_traversal(&((*root)->left_child));
+        bintree_inorder_traversal(&((*root)->left_child));
         /* do something on (*root) at here */
-        bint_inorder_traversal(&((*root)->right_child));
+        bintree_inorder_traversal(&((*root)->right_child));
     }
     else
     {
@@ -60,12 +60,12 @@ void bint_inorder_traversal(const bint *root)
     }
 }
 
-void bint_postorder_traversal(const bint *root)
+void bintree_postorder_traversal(const bintree *root)
 {
     if (*root != NULL)
     {
-        bint_postorder_traversal(&((*root)->left_child));
-        bint_postorder_traversal(&((*root)->right_child));
+        bintree_postorder_traversal(&((*root)->left_child));
+        bintree_postorder_traversal(&((*root)->right_child));
         /* do something on (*root) at here */
     }
     else
@@ -74,7 +74,7 @@ void bint_postorder_traversal(const bint *root)
     }
 }
 
-static int subtree_dtor(bint *root)
+static int subtree_dtor(bintree *root)
 {
     if (*root != NULL)
     {
