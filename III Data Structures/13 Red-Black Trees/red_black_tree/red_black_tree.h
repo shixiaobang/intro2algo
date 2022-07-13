@@ -64,7 +64,7 @@ void rbtree_postorder_traversal(const rbtree *tree, rbtree_node *root);
 rbtree_node *rbtree_search(const rbtree *tree, int key);
 
 /**
- * Return an element in a red-black tree  whose key is a minimum
+ * Return an element in a red-black tree whose key is a minimum
  * @param tree pointer to the red-black tree
  * @param root pointer to the root of a red-black tree or its subtrees
  * @return pointer to the node with minimum key value
@@ -72,7 +72,7 @@ rbtree_node *rbtree_search(const rbtree *tree, int key);
 rbtree_node *rbtree_minimum(const rbtree *tree, const rbtree_node *root);
 
 /**
- * Return an element in a red-black tree  whose key is a maximum
+ * Return an element in a red-black tree whose key is a maximum
  * @param tree pointer to the red-black tree
  * @param root pointer to the root of a red-black tree or its subtrees
  * @return pointer to the node with maximum key value
