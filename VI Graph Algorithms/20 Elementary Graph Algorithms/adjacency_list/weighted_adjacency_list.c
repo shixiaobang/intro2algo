@@ -7,17 +7,17 @@
  * @param weight weight of edge
  * @return pointer to vertex with edge weight
  */
-static wal_element *wal_element_ctor(const int index, const int weight);
+static walist_element *walist_element_ctor(const int index, const int weight);
 
 /**
  * Destroy a weighted graph's adjacency list
  * @param head head of adjacency list
  */
-static int wal_dtor(wal *head);
+static int walist_dtor(walist *head);
 
-wal *wal_array_ctor(const int v)
+walist *walist_array_ctor(const int v)
 {
-    wal *head = (wal *)malloc(sizeof(wal_element *) * v);
+    walist *head = (walist *)malloc(sizeof(walist_element *) * v);
     if (head != NULL)
     {
         for (int i = 0; i < v; i++)
@@ -33,11 +33,11 @@ wal *wal_array_ctor(const int v)
     return head;
 }
 
-int wal_array_dtor(wal **head, const int v)
+int walist_array_dtor(walist **head, const int v)
 {
     for (int i = 0; i < v; i++)
     {
-        wal_dtor(*head + i);
+        walist_dtor(*head + i);
     }
     free(*head);
     *head = NULL;
@@ -45,9 +45,9 @@ int wal_array_dtor(wal **head, const int v)
     return 0;
 }
 
-int wal_prepend(wal *head, const int index, const int weight)
+int walist_prepend(walist *head, const int index, const int weight)
 {
-    wal_element *element = wal_element_ctor(index, weight);
+    walist_element *element = walist_element_ctor(index, weight);
     if (*head != NULL)
     {
         element->next = *head;
@@ -61,9 +61,9 @@ int wal_prepend(wal *head, const int index, const int weight)
     return 0;
 }
 
-static wal_element *wal_element_ctor(const int index, const int weight)
+static walist_element *walist_element_ctor(const int index, const int weight)
 {
-    wal_element *element = (wal_element *)malloc(sizeof(wal_element));
+    walist_element *element = (walist_element *)malloc(sizeof(walist_element));
     element->index = index;
     element->weight = weight;
     element->next = NULL;
@@ -71,17 +71,17 @@ static wal_element *wal_element_ctor(const int index, const int weight)
     return element;
 }
 
-static int wal_dtor(wal *head)
+static int walist_dtor(walist *head)
 {
     if (*head != NULL)
     {
-        const wal_element *p = (*head)->next;
+        const walist_element *p = (*head)->next;
         while (p != NULL)
         {
             free(*head);
             *head = NULL;
 
-            *head = (wal_element *)p;
+            *head = (walist_element *)p;
             p = (*head)->next;
         }
         free(*head);
