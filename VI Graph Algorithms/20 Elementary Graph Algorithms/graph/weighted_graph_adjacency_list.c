@@ -1,12 +1,12 @@
 #include "weighted_graph_adjacency_list.h"
 #include <stdlib.h>
 
-graph_wal *graph_wal_ctor(const int v)
+graph_walist *graph_walist_ctor(const int v)
 {
-    graph_wal *graph = (graph_wal *)malloc(sizeof(graph_wal));
+    graph_walist *graph = (graph_walist *)malloc(sizeof(graph_walist));
     if (graph != NULL)
     {
-        graph->head = wal_array_ctor(v);
+        graph->head = walist_array_ctor(v);
         graph->v = v;
         graph->e = 0;
     }
@@ -14,9 +14,9 @@ graph_wal *graph_wal_ctor(const int v)
     return graph;
 }
 
-int graph_wal_dtor(graph_wal **graph)
+int graph_walist_dtor(graph_walist **graph)
 {
-    wal_array_dtor(&((*graph)->head), (*graph)->v); // free adjacent list array of weighted graph
+    walist_array_dtor(&((*graph)->head), (*graph)->v); // free adjacent list array of weighted graph
 
     free(*graph);
     *graph = NULL;
@@ -24,19 +24,19 @@ int graph_wal_dtor(graph_wal **graph)
     return 0;
 }
 
-int graph_wal_add_ue(graph_wal *graph, const int u, const int v, const int weight)
+int graph_walist_add_ue(graph_walist *graph, const int u, const int v, const int weight)
 {
-    wal_prepend(graph->head + v, u, weight); // prepend u with edge weight to head[v]
-    wal_prepend(graph->head + u, v, weight); // prepend v with edge weight to head[u]
+    walist_prepend(graph->head + v, u, weight); // prepend u with edge weight to head[v]
+    walist_prepend(graph->head + u, v, weight); // prepend v with edge weight to head[u]
 
     graph->e += 1;
 
     return 0;
 }
 
-int graph_wal_add_de(graph_wal *graph, const int u, const int v, const int weight)
+int graph_walist_add_de(graph_walist *graph, const int u, const int v, const int weight)
 {
-    wal_prepend(graph->head + u, v, weight); // prepend u with edge weight to head[v]
+    walist_prepend(graph->head + u, v, weight); // prepend u with edge weight to head[v]
 
     graph->e += 1;
 
