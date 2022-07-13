@@ -5,8 +5,8 @@ typedef struct rooted_tree_node
 {
     int key;
     struct rooted_tree_node *parent;
-    struct rooted_tree_node *left_child;
-    struct rooted_tree_node *right_sibling;
+    struct rooted_tree_node *left_child;    // left-child,
+    struct rooted_tree_node *right_sibling; // right-sibling representation
 } rtree_node;
 
 typedef rtree_node *rtree;
