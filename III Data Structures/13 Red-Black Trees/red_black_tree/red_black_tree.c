@@ -265,37 +265,37 @@ int rbtree_delete(rbtree *tree, rbtree_node **node)
     if ((*node)->left_child == tree->sentinel)
     {
         x = (*node)->right_child;
-        transplant(tree, *node, (*node)->right_child);
+        transplant(tree, *node, (*node)->right_child); // replace z (node) by its right child
     }
     else if ((*node)->right_child == tree->sentinel)
     {
         x = (*node)->left_child;
-        transplant(tree, *node, (*node)->left_child);
+        transplant(tree, *node, (*node)->left_child); // replace z by its left child
     }
     else
     {
-        y = rbtree_minimum(tree, (*node)->right_child);
+        y = rbtree_minimum(tree, (*node)->right_child); // y is z’s successor
         y_original_color = y->color;
         x = y->right_child;
-        if (y != (*node)->right_child)
+        if (y != (*node)->right_child) // is y farther down the tree?
         {
-            transplant(tree, y, y->right_child);
-            y->right_child = (*node)->right_child;
-            y->right_child->parent = y;
+            transplant(tree, y, y->right_child);   // replace y by its right child
+            y->right_child = (*node)->right_child; // z’s right child becomes
+            y->right_child->parent = y;            // y’s right child
         }
         else
         {
-            x->parent = y;
+            x->parent = y; // in case x is T.nil
         }
-        transplant(tree, *node, y);
-        y->left_child = (*node)->left_child;
-        y->left_child->parent = y;
+        transplant(tree, *node, y);          // replace z by its successor y
+        y->left_child = (*node)->left_child; // and give z’s left child to y
+        y->left_child->parent = y;           // which had no left child
         y->color = (*node)->color;
     }
 
-    if (y_original_color == BLACK)
+    if (y_original_color == BLACK) // if any red-black violations occurred
     {
-        delete_fixup(tree, x);
+        delete_fixup(tree, x); // correct them
     }
     else
     {
