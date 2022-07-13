@@ -11,30 +11,35 @@ typedef binstree_node *binstree;
  * Search for a node with a given key in a binary search tree
  * @param root pointer to the root of a binary search tree or its subtrees
  * @param key a given key value
+ * @return pointer to node
  */
 binstree_node *binstree_search(const binstree *root, int key);
 
 /**
  * Return an element in a binary search tree whose key is a minimum
  * @param root pointer to the root of a binary search tree or its subtrees
+ * @return pointer to node
  */
 binstree_node *binstree_minimum(const binstree *root);
 
 /**
  * Return an element in a binary search tree whose key is a maximum
  * @param root pointer to the root of a binary search tree or its subtrees
+ * @return pointer to node
  */
 binstree_node *binstree_maximum(const binstree *root);
 
 /**
  * Return the successor of a node as the next node visited in an inorder traversal
  * @param node pointer to a given node of binary search tree
+ * @return pointer to node
  */
 binstree_node *binstree_successor(const binstree_node *node);
 
 /**
  * Return the predecessor of a node as the previous node visited in an inorder traversal
  * @param node pointer to a given node of binary search tree
+ * @return pointer to node
  */
 binstree_node *binstree_predecessor(const binstree_node *node);
 
