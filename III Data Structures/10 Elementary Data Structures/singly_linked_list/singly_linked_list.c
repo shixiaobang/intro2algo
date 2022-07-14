@@ -5,7 +5,7 @@
  * Initialize a singly linked list element
  * @param key key value of element
  * @return pointer to singly linked list element
- */ 
+ */
 static sllist_element *element_ctor(int key);
 
 sllist *sllist_ctor()
@@ -24,7 +24,7 @@ int sllist_dtor(sllist **head)
         while (p != NULL)
         {
             free(**head);
-            **head = NULL;
+            /* **head = NULL; */
 
             **head = (sllist_element *)p;
             p = (**head)->next;
