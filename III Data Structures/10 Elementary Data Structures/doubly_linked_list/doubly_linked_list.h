@@ -58,14 +58,12 @@ int dllist_append(dllist *head, int key);
  */
 int dllist_insert(dllist *head, int index, int key);
 
-
 /**
  * Delete an element at a specific index in a doubly linked list
  * @param head pointer to the head of doubly linked list
  * @param index a specific index
  */
 int dllist_delete(dllist *head, int index);
-
 
 /**
  * RReturn key value from specific index of doubly linked list
