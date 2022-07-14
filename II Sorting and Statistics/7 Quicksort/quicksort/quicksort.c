@@ -1,11 +1,10 @@
 #include "quicksort.h"
 
-// Quicksort the array A[p : r]
 int quicksort(int *array, int p, int r)
 {
     if (p < r)
-    { // Partition the subarray around the pivot, which ends up in A[q].
-        int q = partition(array, p, r);
+    {
+        int q = partition(array, p, r); // Partition the subarray around the pivot, which ends up in A[q].
 
         quicksort(array, p, q - 1);
         quicksort(array, p + 1, r);
@@ -18,7 +17,6 @@ int quicksort(int *array, int p, int r)
     }
 }
 
-// Partition the array A[p : r] into two (possibly empty) subarrays A[p : q – 1] (the low side) and A[q + 1 : r] (the high side)
 int partition(int *array, int p, int r)
 {
     int x = *(array + r);       // the pivot
